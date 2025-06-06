@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(51, 49, 49);
+}
+
+.clock {
+    margin: 20px;
+    width: 200px;
+    background-color: rgb(5, 5, 37);
+    border: 10px solid rgb(79, 71, 119);
+    color: white;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#time {
+    font-size: xx-large;
+    font-weight: bold;
+}
