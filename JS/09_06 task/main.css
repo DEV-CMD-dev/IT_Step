@@ -1,0 +1,33 @@
+img{
+    width: 20%;
+    height: auto;
+    display: block;
+}
+
+#userInfo{
+    display: flex;
+    margin-top: 5%;
+    border: 2px solid grey;
+    padding: 10px;
+    box-shadow: 5px 5px 10px black;
+}
+
+#name,
+#login,
+#userUrl{
+    margin-left: 20%;
+}
+
+.nameContainer,
+.loginContainer,
+.urlContainer{
+    display: flex;
+}
+
+.leftContent{
+    width: 50%;
+}
+
+.rightContent{
+    flex-grow: 1;
+}

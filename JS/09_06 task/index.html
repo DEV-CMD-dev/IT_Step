@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <h2>GitHub Finder</h2>
+    <form name="searchForm">
+        <label>Username:
+            <input type="text" id="username" placeholder="Enter GitHub username" required>
+        </label>
+        <button type="submit">Search</button>
+    </form>
+    <h2>Search login</h2>
+    <div id="userInfo">
+        <div class="leftContent">
+            
+            <img id="userImage" src="https://avatars.githubusercontent.com/u/2?v=4">
+            <div class="nameContainer">
+                <h3>Name:</h3>
+                <h3 id="name">Not Found</h3>
+            </div>
+            <div class="loginContainer">
+                <h3>Login:</h3>
+                <h3 id="login">Not Found</h3>
+            </div>
+        </div>
+
+        <div class="righContent">
+            <div class="urlContainer">
+                <h3>Url to github:</h3>
+                <h3 id="userUrl">Not Found</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
