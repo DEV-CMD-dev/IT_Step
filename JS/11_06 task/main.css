@@ -1,0 +1,8 @@
+div{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button{
+    display: flex;
+}
