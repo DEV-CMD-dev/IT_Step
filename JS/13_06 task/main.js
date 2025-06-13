@@ -5,7 +5,7 @@ const searchBtn = document.querySelector('#searchBtn');
 const searchBar = document.querySelector('#searchBar');
 
 async function loadProducts() {
-    const response = await fetch("https://api.themoviedb.org/4/list/1", {
+    const response = await fetch(`${api}&page=${pagination.page}`, {
         method: "GET",
         headers: {
             "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYmRjNDMyODg5Zjc1M2FjMDFkMTU4YzQwY2M5ZWQ4ZCIsIm5iZiI6MTc0OTgzMjYwNy4zODIwMDAyLCJzdWIiOiI2ODRjNTM5ZmI2YTlhYWM1NGUxZWJkOTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ypR608Irhl2dd9fVGl5mRRzA6e5Dfw6ugg2Sc1PnSOQ",

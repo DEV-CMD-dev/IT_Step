@@ -1,23 +1,15 @@
 const pagination = {
-    limit: 20,
-    skip: 0,
-    total: null,
     page: 1,
+    total: null,
 
     default() {
-        this.limit = 20;
-        this.skip = 0;
-        this.total = null;
         this.page = 1;
+        this.total = null;
     },
     next() {
-        this.skip += this.limit;
         this.page++;
     },
     prev() {
-        if (this.page <= 1) return;
-
-        this.skip -= this.limit;
-        this.page--;
+        if (this.page > 1) this.page--;
     }
 }
