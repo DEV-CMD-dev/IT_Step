@@ -1,0 +1,13 @@
+
+.stars{
+    width: 200px;
+    margin-left: 10px;
+    font-size: x-large;
+    cursor: pointer;
+    color: lightgray;
+}
+
+.active{
+    color: gold;
+    
+}
