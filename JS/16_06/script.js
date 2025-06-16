@@ -7,8 +7,13 @@ addBlock.on("click",() => {
     block.style.backgroundColor = getRandomColor();
     block.style.width = '100px';
     block.style.height = '100px';
+    block.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        block.remove();
+    })
     blocksDiv.append($(block));
 })
+
 
 
 function getRandomColor() {
