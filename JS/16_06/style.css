@@ -1,0 +1,48 @@
+div{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button{
+    display: flex;
+}
+
+.traffic-light{
+    position: relative;
+    background-color: black;
+    margin: 50px;
+    height: 100px;
+    width: 350px;
+    border: 3px solid black;
+}
+
+.lights{
+    display: flex;
+    width: 250px;
+    height: 80px;
+    margin: 2%;
+    border: 2px grey solid;
+    border-radius: 10px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lights> *{
+    height: 60px;
+    width: 60px;
+    background-color: grey;
+    border-radius: 50%;
+}
+
+#switchBtn{
+    height: 80px;
+    width: 60px;
+    position: absolute;
+    top: 10%;
+    left: 80%;
+    border: none;
+    border-radius: 5%;
+    font-size: large;
+}
