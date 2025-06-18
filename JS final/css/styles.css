@@ -1,0 +1,64 @@
+.field{
+    height: 100%;
+    background-color: #444c54;
+    border: 2px black solid;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.stats{
+    height: 15%;
+    background-color: #444c54;
+    border: 2px black solid;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: none;
+}
+
+.game{
+    height: 300px;
+    width: 245px;
+}
+
+.minesLeft,
+.timer{
+    background-color: white;
+    height: 80%;
+    width: 30%;
+}
+
+.restartButton img{
+    width: 45%;
+
+}
+
+.restartButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cell.closed {
+    background-image: url("../images/closed.svg");
+}
+
+.cell.flagged {
+    background-image: url("../images/flag.svg");
+}
+
+.cell.mine {
+    background-image: url("../images/mine.svg");
+}
+
+.cell.empty {
+    background-image: url("../images/type0.svg");
+}
