@@ -5,6 +5,10 @@
     border: 2px solid black;
 }
 
+body {
+    background-color: #121212;
+}
+
 .stats {
     height: 15%;
     background-color: #444c54;
