@@ -5,7 +5,7 @@
     border: 2px solid black;
 }
 
-.stats{
+.stats {
     height: 15%;
     background-color: #444c54;
     border: 2px black solid;
@@ -15,24 +15,24 @@
     border-bottom: none;
 }
 
-.game{
+.game {
     height: 300px;
     width: 245px;
 }
 
 .minesLeft,
-.timer{
+.timer {
     background-color: white;
     height: 80%;
     width: 30%;
 }
 
-.restartButton img{
+.restartButton img {
     width: 45%;
 
 }
 
-.restartButton{
+.restartButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,7 +45,6 @@
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
-    justify-content: center;
 }
 
 .cell.closed {
