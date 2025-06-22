@@ -26,9 +26,13 @@ body {
 
 .minesLeft,
 .timer {
+    display: flex;
     background-color: white;
     height: 80%;
     width: 30%;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large
 }
 
 .restartButton img {
@@ -48,7 +52,9 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .cell.closed {
@@ -66,3 +72,5 @@ body {
 .cell.empty {
     background-image: url("../images/type0.svg");
 }
+
+.minesLeft {}

@@ -15,6 +15,8 @@ class Cell {
         if (this.isFlagged) {
             this.isFlagged = false;
             this.element.classList.remove('flagged');
+            game.flagsPlaced--;
+            game.updateMinesLeft();
         }
 
         this.updateClass();
@@ -29,6 +31,14 @@ class Cell {
 
         this.isFlagged = !this.isFlagged;
         this.updateClass();
+
+        if (this.isFlagged) {
+            game.flagsPlaced++;
+        } else {
+            game.flagsPlaced--;
+        }
+
+        game.updateMinesLeft();
     }
 
     updateClass() {
@@ -47,32 +57,30 @@ const field = document.querySelector(".field");
 const restartButton = document.querySelector(".restartButton")
 let restartButtonImg = restartButton.querySelector("img");
 
-
 restartButton.addEventListener("click", () => {
     location.reload();
 })
 
 class Game {
-
-
     constructor(width, height, mineCount) {
+        this.timerInterval = null;
+        this.startTime = null;
+        this.timerElement = document.querySelector(".timer");
+
         this.width = width;
         this.height = height;
         this.mineCount = mineCount;
         this.cells = [];
-
-        // this.revealedCount = 0;
-        // this.flagCount = 0;
-
-        // this.minesCounter = document.getElementById("mines");
-        // this.flagsCounter = document.getElementById("flags");
-
+        this.revealedCount = 0;
+        this.flagsPlaced = 0;
+        this.minesLeftSpan = document.getElementById("minesLeft");
     }
 
     init() {
         this.generateCells();
         this.placeMines();
         this.calculateAllNeighbours();
+        this.updateMinesLeft();
     }
 
     generateCells() {
@@ -143,22 +151,30 @@ class Game {
         const cell = this.getCell(x, y);
         if (!cell || cell.isRevealed || cell.isFlagged) return;
 
-        if (cell.hasMine) {
+        if (!this.startTime) {
+            this.startTimer();
+        }
 
+        if (cell.hasMine) {
             cell.reveal();
             this.revealAllMines();
-            restartButtonImg.src = "../images/face_lose.svg"
+            restartButtonImg.src = "../images/face_lose.svg";
+            this.stopTimer();
+            alert("Game Over");
             return;
         }
 
         this.revealRecursive(x, y);
     }
 
+
     revealRecursive(x, y) {
         const cell = this.getCell(x, y);
         if (!cell || cell.isRevealed || cell.isFlagged) return;
 
         cell.reveal();
+        this.revealedCount++;
+        this.checkWinCondition();
 
         if (cell.neighbourMines === 0 && !cell.hasMine) {
             for (let dx = -1; dx <= 1; dx++) {
@@ -180,8 +196,40 @@ class Game {
             }
         }
     }
-}
 
+    updateMinesLeft() {
+        const left = this.mineCount - this.flagsPlaced;
+        this.minesLeftSpan.textContent = left;
+    }
+
+    checkWinCondition() {
+        const totalCells = this.width * this.height;
+        const nonMineCells = totalCells - this.mineCount;
+
+        if (this.revealedCount === nonMineCells) {
+            this.revealAllMines();
+            restartButtonImg.src = "../images/face_win.svg";
+            this.stopTimer();
+            alert("Перемога!");
+        }
+    }
+
+    startTimer() {
+        this.startTime = Date.now();
+        this.timerInterval = setInterval(() => {
+            const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
+            const minutes = String(Math.floor(elapsed / 60)).padStart(2, '0');
+            const seconds = String(elapsed % 60).padStart(2, '0');
+            this.timerElement.textContent = `${minutes}:${seconds}`;
+        }, 1000);
+    }
+
+    stopTimer() {
+        clearInterval(this.timerInterval);
+    }
+
+
+}
 
 const game = new Game(8, 8, 10);
 game.init();
