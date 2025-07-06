@@ -21,7 +21,7 @@ body, html, #root {
   flex-direction: column;
 }
 .sidebar.closed {
-  width: 70px;
+  width: 60px;
 }
 .sidebar header {
   padding: 20px;

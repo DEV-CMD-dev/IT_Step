@@ -8,7 +8,7 @@ export default function Layout() {
     return (
         <div className="layout">
             <aside className={`sidebar ${isOpen ? '' : 'closed'}`}>
-                <header>{isOpen ? 'Menu' : 'М'}</header>
+                <header>{isOpen ? 'Shop' : "S"}</header>
                 <nav>
                     <Link to="/">
                         <span className="icon">🛒</span>
@@ -18,9 +18,9 @@ export default function Layout() {
                         <span className="icon">👤</span>
                         {isOpen && 'Profile'}
                     </Link>
-                    <Link to="/settings">
-                        <span className="icon">⚙️</span>
-                        {isOpen && 'Settings'}
+                    <Link to="/addProduct">
+                        <span className="icon">📦</span>
+                        {isOpen && 'AddProduct'}
                     </Link>
                     <Link to="/help">
                         <span className="icon">❓</span>
