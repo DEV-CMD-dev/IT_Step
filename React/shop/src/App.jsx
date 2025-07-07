@@ -6,10 +6,6 @@ import ProductsPage from '../components/ProductsPage';
 import NotFound404 from '../components/notFound404';
 
 
-
-
-
-
 function App() {
   return (
     <BrowserRouter>
