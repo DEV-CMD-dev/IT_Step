@@ -38,10 +38,6 @@ export default function Layout() {
             <main className="content">
                 <Outlet />
             </main>
-
-            <footer>
-                <p>© 2023 My Shop</p>
-            </footer>
         </div>
     );
 }
