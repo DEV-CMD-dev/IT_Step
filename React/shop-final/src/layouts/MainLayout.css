@@ -15,11 +15,10 @@ html,
     display: flex;
     height: 100vh;
     overflow: hidden;
-    text-wrap: nowrap;
 }
 
 .sidebar {
-    width: 250px;
+    width: 350px;
     background: #161622;
     color: #fff;
     transition: width 0.3s ease;
@@ -29,7 +28,7 @@ html,
 }
 
 .sidebar.closed {
-    width: 65px;
+    width: 70px;
 }
 
 .sidebar header {
