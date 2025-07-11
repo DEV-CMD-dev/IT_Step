@@ -4,6 +4,8 @@ import MainLayout from './Layouts/MainLayout'
 import NotFound from './layouts/NotFound'
 import ProductList from './components/ProductList'
 import { useEffect, useState } from 'react'
+import AddProduct from './components/AddProduct'
+import ProfilePage from './components/ProfilePage'
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -33,8 +35,8 @@ function App() {
         <Route
             index
             element={loading ? <p>Loading...</p> : <ProductList products={products} />}/>
-          <Route path="profile" element={<p>profile</p>} />
-          <Route path="addProducts" element={<p>addProducts</p>} />
+          <Route path="profile" element={<ProfilePage/>} />
+          <Route path="addProducts" element={<AddProduct />} />
           <Route path="support" element={<p>support</p>} />
           <Route path="*" element={<NotFound />} />
         </Route>

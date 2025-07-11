@@ -1,7 +1,7 @@
 .ProductItem {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(90deg, rgb(33, 16, 112) 0%, rgb(30, 14, 100) 35%, rgb(36, 20, 105) 100%);
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     width: 270px;
     max-width: 300px;
     border-radius: 15px;
