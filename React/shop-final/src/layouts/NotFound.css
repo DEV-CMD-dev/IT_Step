@@ -1,0 +1,18 @@
+.NotFound{
+    user-select: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50%;
+}
+
+.NotFound a{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(10, 124, 231);
+    padding: 10px;
+    border-radius: 5px;
+}
