@@ -2,6 +2,7 @@ import ProductItem from './ProductItem'
 import './ProductList.css'
 
 export default function ProductList({ products }) {
+
   if (!products || products.length === 0) {
     return <p>No products available.</p>;
   }

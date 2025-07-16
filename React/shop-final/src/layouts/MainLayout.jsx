@@ -17,13 +17,13 @@ export default function MainLayout() {
                         to="/"
                         end
                         className={({ isActive }) => isActive ? 'active' : ''}>
-                        <span className="icon"><img src='/images/shoppingCart.png' /></span>
+                        <span className="icon"><img src='/images/marketLogo.png' /></span>
                         {isOpen && 'Catalog'}
                     </NavLink>
                     <NavLink
                         to="/profile"
                         className={({ isActive }) => isActive ? 'active' : ''}>
-                        <span className="icon"><img src='/images/userLogo.png' /></span>
+                        <span className="icon"><img src='/images/userLogo.png'></img></span>
                         {isOpen && 'Profile'}
                     </NavLink>
                     <NavLink
@@ -33,12 +33,26 @@ export default function MainLayout() {
                         {isOpen && 'AddProduct'}
                     </NavLink>
                     <NavLink
+                        to="/favorite"
+                        className={({ isActive }) => isActive ? 'active' : ''}>
+                        <span className="icon"><img src='/images/favoriteLogo.png' /></span>
+                        {isOpen && 'Favorite'}
+                    </NavLink>
+                    <NavLink
                         to="/support"
                         className={({ isActive }) => isActive ? 'active' : ''}>
                         <span className="icon"><img src='/images/supportLogo.png' /></span>
                         {isOpen && 'Support'}
                     </NavLink>
                 </nav>
+                <footer>
+                    <NavLink
+                        to="/cart"
+                        className={({ isActive }) => isActive ? 'active' : ''}>
+                        <span className='icon'><img src='/images/shoppingCart.png' /></span>
+                        {isOpen && 'Cart'}
+                    </NavLink>
+                </footer>
             </aside>
 
             <main className="content">

@@ -2,10 +2,12 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MainLayout from './Layouts/MainLayout'
 import NotFound from './layouts/NotFound'
-import ProductList from './components/ProductList'
 import { useEffect, useState } from 'react'
 import AddProduct from './components/AddProduct'
+import ProductList from './components/ProductList'
 import ProfilePage from './components/ProfilePage'
+import ShoppingCart from './components/ShoppingCart'
+import LoadScreen from './layouts/LoadScreen'
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -32,13 +34,15 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<MainLayout />}>
-        <Route
+          <Route
             index
-            element={loading ? <p>Loading...</p> : <ProductList products={products} />}/>
-          <Route path="profile" element={<ProfilePage/>} />
-          <Route path="addProducts" element={<AddProduct />} />
+            element={loading ? <LoadScreen /> : <ProductList products={products} />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="addProducts" element={<AddProduct setProducts={setProducts} />} />
+          <Route path="favorite" element={<p>favorite</p>} />
           <Route path="support" element={<p>support</p>} />
           <Route path="*" element={<NotFound />} />
+          <Route path='cart' element={<ShoppingCart />} />
         </Route>
       </Routes>
     </BrowserRouter>
