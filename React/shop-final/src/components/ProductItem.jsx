@@ -22,7 +22,7 @@ export default function ProductItem({ id, image, isFavorite, title, rating, stoc
                     <img src={isFavorite ? '/images/Favorite.png' : '/images/nonFavorite.png'}></img>
                 </button>
             </span>
-            <h2 className="ellipsis" style={{ color: isFavorite ? 'yellow' : '' }}>{title}</h2>
+            <h2 className="ellipsis">{title}</h2>
             <div>{rating}/5</div>
             <h3 className={inStock ? "inStock" : "outOfStock"}>{inStock ? "In stock" : "Out of stock"}</h3>
             <h2>{price}$</h2>

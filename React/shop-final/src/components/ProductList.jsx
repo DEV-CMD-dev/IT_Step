@@ -1,40 +1,32 @@
-import { useState } from 'react';
-import ProductItem from './ProductItem'
-import './ProductList.css'
-import { v4 as uuidv4 } from "uuid";
+import ProductItem from './ProductItem';
+import './ProductList.css';
 
-export default function ProductList({ products }) {
-
-  const [favorites, setFavorites] = useState([]);
-
-  const toggleFavorites = (id) => {
-    if (favorites.includes(id)) {
-      console.log("removed")
-      setFavorites(favorites.filter(favId => favId !== id));
-    } else {
-      console.log("added")
-      setFavorites([...favorites, id]);
-    }
-  };
-
-
+export default function ProductList({ products, favorites, toggleFavorites, favoritesOnly = false }) {
   if (!products || products.length === 0) {
     return <p>No products available.</p>;
   }
 
+  const displayedProducts = favoritesOnly
+    ? products.filter((product) => favorites.includes(product._id))
+    : products;
+
+  if (displayedProducts.length === 0) {
+    return <p>{favoritesOnly ? 'No favorite products.' : 'No products available.'}</p>;
+  }
+
   return (
     <div className="productList">
-      {products.map((product, index) => (
+      {displayedProducts.map((product) => (
         <ProductItem
-          key={index}
-          id={uuidv4()}
+          key={product._id}
+          id={product._id}
           image={product.image}
-          isFavorite={favorites.includes(product.id)}
+          isFavorite={favorites.includes(product._id)}
           title={product.title}
           rating={product.rating}
           stock={product.stock}
           price={product.price}
-          onToggleFavorite={() => toggleFavorites(product.id)}
+          onToggleFavorite={() => toggleFavorites(product._id)}
         />
       ))}
     </div>

@@ -19,7 +19,7 @@ html,
 }
 
 .sidebar {
-    width: 320px;
+    width: 280px;
     background: #161622;
     color: #fff;
     transition: width 0.3s ease;

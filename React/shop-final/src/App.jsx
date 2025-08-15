@@ -8,10 +8,26 @@ import ProductList from './components/ProductList'
 import ProfilePage from './components/ProfilePage'
 import ShoppingCart from './components/ShoppingCart'
 import LoadScreen from './layouts/LoadScreen'
+import Favorites from './components/Favorites'
 
 function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem('favorites');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  const toggleFavorites = (id) => {
+    setFavorites(prev => 
+      prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id]
+    );
+  };
 
   useEffect(() => {
     async function fetchProducts() {
@@ -36,10 +52,10 @@ function App() {
         <Route path='/' element={<MainLayout />}>
           <Route
             index
-            element={loading ? <LoadScreen /> : <ProductList products={products} />} />
+            element={loading ? <LoadScreen /> : <ProductList products={products} favorites={favorites} toggleFavorites={toggleFavorites} />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="addProducts" element={<AddProduct setProducts={setProducts} />} />
-          <Route path="favorite" element={<p>favorite</p>} />
+          <Route path="favorite" element={<Favorites favorites={favorites} products={products} toggleFavorites={toggleFavorites}/>} />
           <Route path="support" element={<p>support</p>} />
           <Route path="*" element={<NotFound />} />
           <Route path='cart' element={<ShoppingCart />} />
