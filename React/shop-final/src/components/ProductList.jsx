@@ -1,7 +1,8 @@
+import { set } from 'react-hook-form';
 import ProductItem from './ProductItem';
 import './ProductList.css';
 
-export default function ProductList({ products, favorites, toggleFavorites, favoritesOnly = false }) {
+export default function ProductList({ products, favorites, toggleFavorites, favoritesOnly = false, setCart, cart }) {
   if (!products || products.length === 0) {
     return <p>No products available.</p>;
   }
@@ -22,11 +23,13 @@ export default function ProductList({ products, favorites, toggleFavorites, favo
           id={product._id}
           image={product.image}
           isFavorite={favorites.includes(product._id)}
+          isInCart={cart.includes(product._id)}
           title={product.title}
           rating={product.rating}
           stock={product.stock}
           price={product.price}
           onToggleFavorite={() => toggleFavorites(product._id)}
+          onCartAdded={() => setCart(product._id)}
         />
       ))}
     </div>

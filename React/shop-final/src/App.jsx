@@ -23,7 +23,14 @@ function App() {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart])
 
-  const addToCart = (id) => {}
+  const addToCart = (id) => {
+    setCart(prev => {
+      if (!Array.isArray(prev)) return [id];
+      return prev.includes(id) ? prev.filter(itemId => itemId !== id) : [...prev, id];
+    });
+  };
+
+
 
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem('favorites');
@@ -35,7 +42,7 @@ function App() {
   }, [favorites]);
 
   const toggleFavorites = (id) => {
-    setFavorites(prev => 
+    setFavorites(prev =>
       prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id]
     );
   };
@@ -63,13 +70,14 @@ function App() {
         <Route path='/' element={<MainLayout />}>
           <Route
             index
-            element={loading ? <LoadScreen /> : <ProductList products={products} favorites={favorites} toggleFavorites={toggleFavorites} />} />
+            element={loading ? <LoadScreen /> : <ProductList products={products} favorites={favorites} toggleFavorites={toggleFavorites} cart={cart} setCart={addToCart} />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="addProducts" element={<AddProduct setProducts={setProducts} />} />
-          <Route path="favorite" element={<Favorites favorites={favorites} products={products} toggleFavorites={toggleFavorites}/>} />
+          <Route path="favorite" element={<Favorites favorites={favorites} products={products} toggleFavorites={toggleFavorites} cart={cart} setCart={addToCart}/>} />
           <Route path="support" element={<p>support</p>} />
           <Route path="*" element={<NotFound />} />
-          <Route path='cart' element={<ShoppingCart />} />
+          <Route
+            path='cart' element={<ShoppingCart products={products.filter(product => cart.includes(product._id))} favorites={favorites} toggleFavorites={toggleFavorites} setCart={addToCart} cart={cart}/>} />
         </Route>
       </Routes>
     </BrowserRouter>

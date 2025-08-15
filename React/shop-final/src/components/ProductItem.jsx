@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './ProductItem.css'
 
-export default function ProductItem({ id, image, isFavorite, title, rating, stock, price, onToggleFavorite }) {
+export default function ProductItem({ id, image, isFavorite, isInCart, title, rating, stock, price, onToggleFavorite, onCartAdded }) {
     const inStock = stock > 0
     const [imgError, setImgError] = useState(false);
 
@@ -27,7 +27,8 @@ export default function ProductItem({ id, image, isFavorite, title, rating, stoc
             <h3 className={inStock ? "inStock" : "outOfStock"}>{inStock ? "In stock" : "Out of stock"}</h3>
             <h2>{price}$</h2>
 
-            <button className='addToCartButton'>Add to Cart</button>
+            {/* <button className={'cartButton' + isInCart ? 'removeButton' : ''} onClick={() => onCartAdded(id)}>{isInCart ? "Remove from cart" : "Add to cart "}</button> */}
+            <button className='cartButton' onClick={() => onCartAdded(id)}>{isInCart ? "Remove from cart" : "Add to cart "}</button>
 
         </div>
     )
