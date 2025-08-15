@@ -14,6 +14,17 @@ function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart])
+
+  const addToCart = (id) => {}
+
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem('favorites');
     return saved ? JSON.parse(saved) : [];
