@@ -37,7 +37,7 @@ html,
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
-    cursor:pointer;
+    cursor: pointer;
     text-wrap: nowrap;
 }
 
@@ -49,8 +49,8 @@ html,
     padding: 10px 0;
 }
 
-.sidebar nav a ,
-.layout footer a{
+.sidebar nav a,
+.layout footer a {
     padding: 15px 20px;
     color: #D3D6E0;
     text-decoration: none;
@@ -83,13 +83,24 @@ html,
     overflow-y: auto;
 }
 
-.layout aside img{
+.layout aside img {
     width: 30px;
 }
 
-.layout footer a{
+.layout footer a {
     font-size: large;
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
+}
+
+.cartItemCounter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    font-size: 15px;
 }

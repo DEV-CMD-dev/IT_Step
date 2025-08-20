@@ -67,17 +67,17 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<MainLayout />}>
+        <Route path='/' element={<MainLayout cart={cart} />}>
           <Route
             index
             element={loading ? <LoadScreen /> : <ProductList products={products} favorites={favorites} toggleFavorites={toggleFavorites} cart={cart} setCart={addToCart} />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="addProducts" element={<AddProduct setProducts={setProducts} />} />
-          <Route path="favorite" element={<Favorites favorites={favorites} products={products} toggleFavorites={toggleFavorites} cart={cart} setCart={addToCart}/>} />
+          <Route path="favorite" element={<Favorites favorites={favorites} products={products} toggleFavorites={toggleFavorites} cart={cart} setCart={addToCart} />} />
           <Route path="support" element={<p>support</p>} />
           <Route path="*" element={<NotFound />} />
           <Route
-            path='cart' element={<ShoppingCart products={products.filter(product => cart.includes(product._id))} favorites={favorites} toggleFavorites={toggleFavorites} setCart={addToCart} cart={cart}/>} />
+            path='cart' element={<ShoppingCart products={products.filter(product => cart.includes(product._id))} favorites={favorites} toggleFavorites={toggleFavorites} setCart={addToCart} cart={cart} />} />
         </Route>
       </Routes>
     </BrowserRouter>

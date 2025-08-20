@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import './MainLayout.css';
 
-export default function MainLayout() {
+export default function MainLayout({cart}) {
     const [isOpen, setIsOpen] = useState(true);
+
+    let isCartNotEmpty = cart.length > 0;
 
     return (
         <div className="layout">
@@ -49,7 +51,10 @@ export default function MainLayout() {
                     <NavLink
                         to="/cart"
                         className={({ isActive }) => isActive ? 'active' : ''}>
-                        <span className='icon'><img src='/images/shoppingCart.png' /></span>
+                        <span className='icon'>
+                            <img src='/images/shoppingCart.png'/>
+                            <div className={isCartNotEmpty ? 'cartItemCounter' : ''}>{isCartNotEmpty ? cart.length  : ''}</div>  
+                        </span>
                         {isOpen && 'Cart'}
                     </NavLink>
                 </footer>
