@@ -74,7 +74,7 @@ function App() {
           <Route path="profile" element={<ProfilePage />} />
           <Route path="addProducts" element={<AddProduct setProducts={setProducts} />} />
           <Route path="favorite" element={<Favorites favorites={favorites} products={products} toggleFavorites={toggleFavorites} cart={cart} setCart={addToCart} />} />
-          <Route path="support" element={<p>support</p>} />
+          {/* <Route path="support" element={<p>support</p>} /> */}
           <Route path="*" element={<NotFound />} />
           <Route
             path='cart' element={<ShoppingCart products={products.filter(product => cart.includes(product._id))} favorites={favorites} toggleFavorites={toggleFavorites} setCart={addToCart} cart={cart} />} />
