@@ -9,9 +9,23 @@ import ProfilePage from './components/ProfilePage'
 import ShoppingCart from './components/ShoppingCart'
 import LoadScreen from './layouts/LoadScreen'
 import Favorites from './components/Favorites'
+import { UserRole } from './components/classes/UserRole'
+import { User } from './components/classes/User'
+
+interface Product {
+  _id: string;
+  image: string;
+  title: string;
+  rating: number;
+  stock: number;
+  price: number;
+}
+
 
 function App() {
-  const [products, setProducts] = useState([]);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   const [cart, setCart] = useState(() => {
@@ -71,8 +85,8 @@ function App() {
           <Route
             index
             element={loading ? <LoadScreen /> : <ProductList products={products} favorites={favorites} toggleFavorites={toggleFavorites} cart={cart} setCart={addToCart} />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="addProducts" element={<AddProduct setProducts={setProducts} />} />
+          <Route path="profile" element={<ProfilePage currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+          <Route path="addProducts" element={currentUser && currentUser.role !== UserRole.User ? <AddProduct setProducts={setProducts} /> : null} />
           <Route path="favorite" element={<Favorites favorites={favorites} products={products} toggleFavorites={toggleFavorites} cart={cart} setCart={addToCart} />} />
           {/* <Route path="support" element={<p>support</p>} /> */}
           <Route path="*" element={<NotFound />} />
