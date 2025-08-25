@@ -18,13 +18,13 @@ export default function ProfilePage({ currentUser, setCurrentUser }) {
         setUsers([...users, new User(username, hash, UserRole.User)]);
         setUsername('');
         setPassword('');
-        alert(`User "${username}" registered!`);
+        console.log(`User "${username}" registered!`);
     }
 
     const login = () => {
         const user = users.find(u => u.username === username);
         if (!user) {
-            alert(`User "${username}" not found`);
+            console.log(`User "${username}" not found`);
             return;
         }
         const isValid = bcrypt.compareSync(password, user.passwordHash);
@@ -33,8 +33,9 @@ export default function ProfilePage({ currentUser, setCurrentUser }) {
             setUsername('');
             setPassword('');
         } else {
-            alert("Wrong password");
+            console.log("Wrong password");
         }
+        console.log(users)
     }
 
     const logout = () => {
@@ -44,7 +45,7 @@ export default function ProfilePage({ currentUser, setCurrentUser }) {
     return (
         <div className="profilePage">
             {!currentUser ? (
-                <div className="form">
+                <div className="loginForm">
                     <h2>Register / Login</h2>
                     <input
                         type="text"
@@ -58,7 +59,7 @@ export default function ProfilePage({ currentUser, setCurrentUser }) {
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                     />
-                    <div className="buttons">
+                    <div className="profileButtons">
                         <button onClick={register}>Register</button>
                         <button onClick={login}>Login</button>
                     </div>
@@ -66,7 +67,11 @@ export default function ProfilePage({ currentUser, setCurrentUser }) {
             ) : (
                 <div className="profile">
                     <h2>Welcome, {currentUser.username}!</h2>
-                    <p>Role: {currentUser.role}</p>
+                    <div className='profileImageHolder'>
+                        <img src='/images/user.png' />
+                    </div>
+                    <p>Role: {UserRole[currentUser.role]}</p>
+                    <p>Date of registration: {currentUser.creationDate.toLocaleDateString()}</p>
                     <button onClick={logout}>Logout</button>
                 </div>
             )}

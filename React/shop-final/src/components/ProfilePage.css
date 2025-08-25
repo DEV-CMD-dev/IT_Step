@@ -1,22 +1,65 @@
 .profilePage {
-    max-width: 400px;
+    max-width: 500px;
     margin: 40px auto;
     padding: 30px;
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     border-radius: 15px;
     color: #fff;
-    text-align: center;
     box-shadow: 0 10px 30px rgba(37, 117, 252, 0.4);
-    font-family: 'Segoe UI', Tahoma,  Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+
 }
-  
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.loginForm input {
+    padding: 15px;
+    font-size: larger;
+    border: none;
+    border-radius: 5px;
+}
+
+.loginForm button {
+    padding: 20px;
+    font-size: large;
+    border: 2px solid rgb(79, 26, 129);
+    background-color: rgb(57, 16, 204);
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.loginForm button:hover {
+    border: 2px solid #761fd3;
+    background-color: rgb(65, 20, 228);
+}
+
+.profileButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.profileButtons button {
+    flex: 1;
+    max-width: 50%;
+}
+
+
+
+
 .profilePage h1 {
     margin-bottom: 20px;
     font-weight: 700;
     font-size: 2.5rem;
     letter-spacing: 1.2px;
 }
-  
+
 .profileImage {
     width: 150px;
     height: 150px;
@@ -26,14 +69,43 @@
     margin-bottom: 20px;
     transition: transform 0.3s ease;
 }
-  
+
 .profileImage:hover {
     transform: scale(1.05);
 }
-  
+
 .profilePage p {
     font-size: 1.1rem;
     line-height: 1.5;
     opacity: 0.85;
 }
-  
+
+.profile {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.profileImageHolder {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border: 2px black solid;
+    box-shadow: 0 0 10px blueviolet;
+    border-radius: 50%;
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile button {
+    padding: 5px;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+}

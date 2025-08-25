@@ -1,0 +1,7 @@
+html {
+    user-select: none;
+}
+
+button:active{
+    scale: 101%;
+}
